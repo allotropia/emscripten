@@ -1510,7 +1510,7 @@ var LibraryEmbind = {
     // at run-time, not build-time.
     finalizationRegistry = new FinalizationRegistry((info) => {
 #if ASSERTIONS
-      console.warn(info.leakWarning);
+      //HACK: suppressed for now due to <https://github.com/emscripten-core/emscripten/issues/22575> "Embind regression: Leaked C++ object when calling from C++ to JS": console.warn(info.leakWarning);
 #endif
       releaseClassHandle(info.$$);
     });
